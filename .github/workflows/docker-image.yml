@@ -13,4 +13,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag app-server:$(date +%s)
+    - name: Tag the Docker image
+      run: docker tag app-server:$(date +%s) jonsnow007/app-server:$(date +%s)
+    - name: Push the Docker image
+      run: docker push jonsnow007/app-server:$(date +%s)
+      

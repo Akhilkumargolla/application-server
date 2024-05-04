@@ -15,7 +15,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag app-server:${{ github.run_number }}
     - name: Tag the Docker image
-      run: docker tag app-server${{ github.run_number }} jonsnow007/app-server${{ github.run_number }}
+      run: docker tag app-server:${{ github.run_number }} jonsnow007/app-server:${{ github.run_number }}
     - name: Push the Docker image
       run: docker push jonsnow007/app-server:${{ github.run_number }}
       

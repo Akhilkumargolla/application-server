@@ -9,13 +9,17 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tag-version: [$(date +%s)]
 
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag app-server:$(date +%s)
+      run: docker build . --file Dockerfile --tag app-server:${{ matrix.tag-version }}
     - name: Tag the Docker image
-      run: docker tag app-server:$(date +%s) jonsnow007/app-server:$(date +%s)
+      run: docker tag app-server:${{ matrix.tag-version }} jonsnow007/app-server:${{ matrix.tag-version }}
     - name: Push the Docker image
-      run: docker push jonsnow007/app-server:$(date +%s)
+      run: docker push jonsnow007/app-server:${{ matrix.tag-version }}
       

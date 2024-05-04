@@ -96,7 +96,6 @@ def update_data_route(data_id):
     return jsonify({'message': 'Data updated successfully'})
 
 @app.route('/delete/data/<int:data_id>', methods=['DELETE'])
-@block_ip
 def delete_data_route(data_id):
     """Delete data by ID."""
     delete_data(data_id)

@@ -22,6 +22,10 @@ ENV PATH="/venv/bin:$PATH"
 # Install dependencies within the virtual environment
 RUN pip install --no-cache-dir -r requirements.txt
 
+EXPOSE 5000
+
+EXPOSE 5001
+
 # Copy the application code
 COPY . .
 

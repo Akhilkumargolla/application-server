@@ -12,7 +12,12 @@ jobs:
       - uses: actions/checkout@v4
       - name: Login to Docker Hub
         run: echo "${{ secrets.DOCKER_ACCESS_TOKEN }}" | docker login --username jonsnow007 --password-stdin
+      - name: Build the Docker image app-server:0.10
+        run: docker build . --file Dockerfile --tag jonsnow007/app-server:0.10
+      - name: Push the Docker image app-server:0.10
+        # run: docker push jonsnow007/app-server:0.${{ github.run_number }}
+        run: docker push jonsnow007/app-server:0.10
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag jonsnow007/app-server:0.${{ github.run_number }}
+        run: docker build . --file dockerfile-service-2 --tag jonsnow007/new-app-server:0.1
       - name: Push the Docker image
-        run: docker push jonsnow007/app-server:0.${{ github.run_number }}
+        run: docker push jonsnow007/new-app-server:0.1

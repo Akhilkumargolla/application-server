@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-server-ingress
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: www.studyhub.today
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: app-server-service
+                port:
+                  number: 80
+    - host: www.studyhub.today
+      http:
+        paths:
+          - pathType: Prefix
+            path: /appservice
+            backend:
+              service:
+                name: app-server-service-2
+                port:
+                  number: 80

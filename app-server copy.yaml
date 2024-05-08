@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-server-2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app-server-2
+  template:
+    metadata:
+      labels:
+        app: app-server-2
+    spec:
+      containers:
+      - name: app-server-2
+        image: jonsnow007/new-app-server:0.1
+        ports:
+        - containerPort: 5000

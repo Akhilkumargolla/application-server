@@ -28,4 +28,4 @@ EXPOSE 5000
 COPY . .
 
 # Command to run the application
-CMD ["python", "src/app.py"]
+CMD ["python", "src/app_copy.py"]
